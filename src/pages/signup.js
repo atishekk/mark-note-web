@@ -39,7 +39,7 @@ const SignUp = props => {
   };
 
   useEffect(() => {
-    document.title = 'Sign Up - Notedly';
+    document.title = 'Sign Up - MarkNote';
   });
 
 

@@ -7,7 +7,7 @@ import {SIGN_IN_USER} from '../gql/mutation';
 const SignIn = props => {
   const {dispatch} = React.useContext(AuthContext);
   useEffect(() => {
-    document.title = 'Sign In - Notedly';
+    document.title = 'Sign In - MarkNote';
   });
 
   const client = useApolloClient();
