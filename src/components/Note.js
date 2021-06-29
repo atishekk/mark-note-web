@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useContext} from 'react';
 import ReactMarkdown from 'react-markdown';
 import { format } from 'date-fns';
 import styled from 'styled-components';
@@ -7,13 +7,8 @@ import FadeIn from "./FadeIn"
 import NoteUser from './NoteUser';
 import {IS_LOGGED_IN} from '../gql/query';
 import { useQuery } from '@apollo/client';
+import {AuthContext} from "../pages/index"
 
-const NoteWrapper = styled.div`
-  max-width: 400px;
-  margin: 0 auto;
-  margin-bottom: 2em;
-  padding-bottom: 2em;
-`;
 
 const StyledNote = styled.article`
   max-width: 800px;
@@ -36,10 +31,8 @@ const UserAction = styled.div`
 `;
 
 const Note = ({note, index, feed}) => {
+  const {state} = useContext(AuthContext);
 
-  const[isLoggedIn, update] = useState()
-
-  useEffect(() => update(!!localStorage.getItem('token')))
 
   if(feed) return (
     <Card note={note} index = {index}/>
@@ -53,9 +46,9 @@ const Note = ({note, index, feed}) => {
         </MetaInfo>
         <MetaInfo>
           <em>by</em> {note.author.username} <br />
-          {format(new Date(note.createdAt), 'MMM Do yyyy')}
+          {format(new Date(note.createdAt), 'MMM do yyyy')}
         </MetaInfo>
-        {isLoggedIn ? (
+        {state.isAuthenticated ? (
           <UserAction>
             <NoteUser note={note}/>
           </UserAction>

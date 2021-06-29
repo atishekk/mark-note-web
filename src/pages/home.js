@@ -36,7 +36,7 @@ const Home = () => {
               };
             }
           })
-        }>
+          } style={{marginTop: "20px"}}>
           Load More
         </Button>
       )}

@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import UserForm from '../components/UserForm';
 
 import {SIGNUP_USER} from '../gql/mutation';
+import {AuthContext} from "./index"
+
 
 const Wrapper = styled.div`
   border: 1px solid #f5f4f0;
@@ -26,6 +28,7 @@ const Form = styled.form`
 
 const SignUp = props => {
 
+  const {dispatch} = React.useContext(AuthContext);
   const [values, setValues] = useState();
 
   const onChange = event => {
@@ -43,6 +46,9 @@ const SignUp = props => {
   const [signUp, {loading, error}] = useMutation(SIGNUP_USER, {
     onCompleted: data => {
       localStorage.setItem('token', data.signUp);
+      dispatch({
+        type: "LOGIN"
+      })
       props.history.push('/')
     }
   });

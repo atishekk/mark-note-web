@@ -1,8 +1,8 @@
-import React, {useState, useEffect} from 'react';
+import React, {useContext} from 'react';
 import ReactMarkdown from 'react-markdown';
 import { format } from 'date-fns';
 import styled from 'styled-components';
-
+import {AuthContext} from "../pages/index"
 import FadeIn from "./FadeIn"
 import NoteUser from './NoteUser';
 import {IS_LOGGED_IN} from '../gql/query';
@@ -52,9 +52,7 @@ const Image = styled.img`
 
 const Card = ({note, index}) => {
 
-  const[isLoggedIn, update] = useState()
-
-  useEffect(() => update(!!localStorage.getItem('token')))
+  const {state} = useContext(AuthContext);
 
   return(
     <StyledNote>
@@ -64,9 +62,9 @@ const Card = ({note, index}) => {
         </MetaInfo>
         <MetaInfo>
           <em>by</em> {note.author.username} <br />
-          {format(new Date(note.createdAt), 'MMM Do yyyy')}
+          {format(new Date(note.createdAt), 'MMM do yyyy')}
         </MetaInfo>
-        {isLoggedIn ? (
+        {state.isAuthenticated ? (
           <UserAction>
             <NoteUser note={note}/>
           </UserAction>
