@@ -15,6 +15,11 @@ const Nav = styled.nav`
     height: calc(100% - 64px);
     overflow-y: scroll;
   }
+  ::-webkit-scrollbar {
+  display: none;
+  }
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 `;
 
 const NavList = styled.ul`
