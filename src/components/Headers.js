@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
-import logo from 'url:../img/logo.svg';
+import logo from '../img/logo.svg';
 import { useQuery, gql } from '@apollo/client';
 import { Link, withRouter } from 'react-router-dom';
 import ButtonAsLink from './ButtonAsLink';
