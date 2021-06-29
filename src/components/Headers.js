@@ -5,6 +5,7 @@ import { useQuery, gql } from '@apollo/client';
 import { Link, withRouter } from 'react-router-dom';
 import ButtonAsLink from './ButtonAsLink';
 import Theme from "./Theme"
+import StyledLink from "./StyledLink"
 
 const UserState = styled.div`
   margin-left: auto;
@@ -28,24 +29,6 @@ const LogoText = styled.h1`
   display: inline;
 `;
 
-const StyledLink = styled(Link)`
-  background: none;
-  color: #0077cc;
-  border: none;
-  padding: 10px;
-  font: inherit;
-  text-decoration: none;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: 0.5s;
-
-  :hover,
-  active{
-    background-color: #0077cc;
-    color: #fff;
-    box-shadow: 0px 0px 10px #ddd;
-  }
-`;
 
 const Logo = styled.img`
   background-color:${Theme.color4};
